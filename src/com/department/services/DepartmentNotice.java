@@ -7,30 +7,22 @@ import com.department.details.TechDepartment;
 
 public class DepartmentNotice {
 
-	private void printdepartmentdetails(SuperDepartment department) 
-	{
-		String departmentname = department.departmentName();
-		System.out.println("Welcome to " + departmentname);
-		
-		if (department instanceof HrDepartment) 
-		{
-			String groupActivity = ((HrDepartment)department).doActivity();
-			System.out.println(groupActivity);
+	private static void printdepartmentdetails(SuperDepartment department) {
+		System.out.println("Welcome to " + department.departmentName());
+
+		if (department instanceof HrDepartment) {
+			System.out.println(((HrDepartment) department).doActivity());
 		}
-		
-		String todayswork = department.getTodaysWork();
-		System.out.println(todayswork);
-		String deadline = department.getWorkDeadline();
-		System.out.println(deadline);
-		
-		if (department instanceof TechDepartment) 
-		{
-			String stackInfo = ((TechDepartment)department).getTechStackInformation();
-			System.out.println(stackInfo);
+
+		System.out.println(department.getTodaysWork());
+
+		System.out.println(department.getWorkDeadline());
+
+		if (department instanceof TechDepartment) {
+			System.out.println(((TechDepartment) department).getTechStackInformation());
 		}
-		
-		String workingoff = department.isTodayAHoliday();
-		System.out.println(workingoff + "\n");
+
+		System.out.println(department.isTodayAHoliday() + "\n");
 	}
 
 	public static void main(String[] args) {
@@ -38,11 +30,10 @@ public class DepartmentNotice {
 		SuperDepartment admin = new AdminDepartment();
 		SuperDepartment hr = new HrDepartment();
 		SuperDepartment tech = new TechDepartment();
-		DepartmentNotice notice = new DepartmentNotice();
 
-		notice.printdepartmentdetails(admin);
-		notice.printdepartmentdetails(hr);
-		notice.printdepartmentdetails(tech);
+		printdepartmentdetails(admin);
+		printdepartmentdetails(hr);
+		printdepartmentdetails(tech);
 
 	}
 }
